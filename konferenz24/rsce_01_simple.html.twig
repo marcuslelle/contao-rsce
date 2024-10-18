@@ -1,0 +1,24 @@
+<div class="text__image__button twig">
+    <div class="grid grid__cols--2">
+        <div class="textblock">
+            <{{hl}}>{{ headline }}</{{hl}}>
+            {{ text|raw }}
+            <a class="btn btn--primary" href="{{ link }}">{{ button }}</a>
+        </div>
+        {% if singleSRC %}
+            {% use "@Contao/component/_figure.html.twig" %}
+            {# Create the figure inline or use the one already in our context #}
+            {% set my_figure = figure(singleSRC, 6, { 
+                metadata: { alt: imageAlt, title: imageTitle, caption: imageCaption },
+                enableLightbox: imageLightbox,
+                linkHref: imageLink,
+                options: { attr: { class: imageClass } }
+            }) %}
+            {# Output it using the figure component #}
+            {% with {figure: my_figure} %}{{ block('figure_component') }}{% endwith %}
+        {# deprecated ab Contao 5 #}
+            {{ contao_figure(singleSRC, 6) }}
+        {# #}
+        {% endif %}
+    </div>
+</div>

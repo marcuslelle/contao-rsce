@@ -1,0 +1,33 @@
+<{{ hl }}>{{ headline }}</{{ hl }}>
+<div class="team grid grid__cols--3">
+    {% for listitem in listitems %}
+        <div class="team__person">
+            {% use "@Contao/component/_figure.html.twig" %}
+            {# Create the figure inline or use the one already in our context #}
+            {% set my_figure = figure(listitem.image, 7, { 
+                metadata: { caption: '' },
+            }) %}
+            {# Output it using the figure component #}
+            {% with {figure: my_figure} %}{{ block('figure_component') }}{% endwith %}
+            <div class="team__person__data">
+                <h2>{{ listitem.name }}</h2>
+                <p>
+                    {% if listitem.phone %}
+                        Telefon: <a href='tel:{{ listitem.phone }}'>{{ listitem.phone }}</a>
+                    {% endif %}
+                        <br>
+                    {% if listitem.email %}
+                        E-Mail: <a href='mailto:{{ listitem.email }}'>{{ listitem.email }}</a>
+                    {% else %}
+                        <br>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="team__social-media">
+                {% for socialmedia in listitem.socialmedia %}
+                    <a href="{{ socialmedia.link }}" class="fa-brands fa-{{ socialmedia.socialNetwork }}" target='_blank'></a>                
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

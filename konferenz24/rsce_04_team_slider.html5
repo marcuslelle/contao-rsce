@@ -1,0 +1,53 @@
+<?php $sliderId = "slider".$this->id; ?>
+
+<<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+<div class="team swiper swiper--boxed slider--team <?= $sliderId ?>">
+    <div class="swiper-wrapper">
+        <?php foreach ($this->listitems as $listitem): ?>
+            <div class="team__person swiper-slide">
+                <?= $this->figure($listitem->image, 7) ?>
+                <div class="team__person__data">
+                    <h2><?= $listitem->name ?></h2>
+                    <p>
+                        <?php if ($listitem->phone) { echo "Telefon: <a href='tel:" . $listitem->phone . "'>" . $listitem->phone . "</a>"; } ?><br>
+                        <?php if ($listitem->email) { echo "E-Mail: <a href='mailto:" . $listitem->email . "'>" . $listitem->email . "</a>"; } ?><br>
+                    </p>
+                </div>
+                <div class="team__social-media">
+                    <?php foreach ($listitem->socialmedia as $socialmedia): ?>
+                        <a href="<?= $socialmedia->link ?>" class="fa-brands fa-<?= $socialmedia->socialNetwork ?>" target='_blank'></a>
+                    <?php endforeach ?>
+                </div>
+
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+
+<?php
+    $autoplay = 0;
+    $itemsDesktop = 3;
+    $autoplay = $this->autoplay;
+    $itemsDesktop = $this->itemsDesktop;
+    $GLOBALS['TL_BODY'][] = "<script src='assets/swiper/js/swiper-bundle.min.js'></script>";
+    $GLOBALS['TL_BODY'][] = "
+    <script>
+        const swiper".$this->id." = new Swiper('.".$sliderId."', {
+        loop: true,
+        autoplay: {
+            delay: ".$autoplay.",
+            disableOnInteraction: true,
+        },
+        slidesPerView: 1,
+        breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: ".$itemsDesktop.",
+                },
+            },
+        });
+    </script>
+    ";
+?>

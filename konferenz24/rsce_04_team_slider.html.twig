@@ -1,0 +1,66 @@
+{% set sliderId = "slider" ~ id %}
+
+<{{ hl }}>{{ headline }}</{{ hl }}>
+<div class="team swiper swiper--boxed slider--team {{ sliderId }}">
+    <div class="swiper-wrapper">
+        {% for listitem in listitems %}
+            <div class="team__person swiper-slide">
+                {% use "@Contao/component/_figure.html.twig" %}
+                {# Create the figure inline or use the one already in our context #}
+                {% set my_figure = figure(listitem.image, 7, { 
+                    metadata: { caption: '' },
+                }) %}
+                {# Output it using the figure component #}
+                {% with {figure: my_figure} %}{{ block('figure_component') }}{% endwith %}
+                <div class="team__person__data">
+                    <h2>{{ listitem.name }}</h2>
+                    <p>
+                        {% if listitem.phone %}
+                            Telefon: <a href='tel:{{ listitem.phone }}'>{{ listitem.phone }}</a>
+                        {% endif %}
+                            <br>
+                        {% if listitem.email %}
+                            E-Mail: <a href='mailto:{{ listitem.email }}'>{{ listitem.email }}</a>
+                        {% else %}
+                            <br>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="team__social-media">
+                    {% for socialmedia in listitem.socialmedia %}
+                        <a href="{{ socialmedia.link }}" class="fa-brands fa-{{ socialmedia.socialNetwork }}" target='_blank'></a>                
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{# Slider-Steuerung #}
+
+{% add "swiperjs" to body %}
+    <script src='assets/swiper/js/swiper-bundle.min.js'></script>
+{% endadd %}
+
+{% add to body %}
+    <script>
+        const swiper{{ id }} = new Swiper('.{{ sliderId }}', {
+        loop: true,
+        {% if autoplay > 0 %}
+        autoplay: {
+            delay: {{ autoplay }},
+            disableOnInteraction: true,
+        },
+        {% endif %}
+        slidesPerView: 1,
+        breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: {{ itemsDesktop }},
+                },
+            },
+        });
+    </script>
+{% endadd %}

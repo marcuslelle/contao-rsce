@@ -1,0 +1,34 @@
+{% if as_editor_view %}
+    Hallo
+{% else %}
+
+{% set today = 'now'|date('U') %}
+
+<div class="trainings__list grid grid__cols--2">
+    {% for training in trainings|sort((a, b) => a.startdate <=> b.startdate) %}
+        {% if training.startdate > today or training.startdate == '' %}
+            <div class="training">
+                {% if training.trainingnr %} 
+                    <div class="training__id">FortbildungsNetz-Nr.: {{ training.trainingnr }}</div>
+                {% endif %} 
+                {% if training.headline %} 
+                    <h2 class="training__headline"><strong>{{ training.headline }}</strong></h2>
+                {% endif %} 
+                {% if training.trainer %} 
+                    <div class="training__trainer">{{ training.trainer }}</div>
+                {% endif %} 
+                {% if training.email %} 
+                    <div class="training__email">{{ training.email }}</div>
+                {% endif %} 
+                {% if training.date %} 
+                    <div class="training__date">Termin: {{ training.date }} - <span class="training__maxpersons">{% if training.participants == 0 %}TZ offen{% else %}Maximale Teilnehmerzahl: {{ training.participants }}{% endif %} </span></div>
+                {% endif %} 
+                {% if training.text %} 
+                    <div class="training__longtext">{{ training.text|raw }}</div>
+                {% endif %} 
+            </div>
+        {% endif %} 
+    {% endfor %}
+</div>
+
+{% endif %}

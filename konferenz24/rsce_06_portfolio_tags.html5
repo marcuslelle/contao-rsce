@@ -1,0 +1,25 @@
+<?php
+    use Contao\CoreBundle\File\Metadata;
+    $dataCategories = '';
+    for ($i = 0; $i < count($this->categories); $i++) {
+        $dataCategories .= strtolower(str_replace(" ", "-", $this->categories[$i]))." ";
+    }
+?>
+
+<h2><?= $this->headline ?></h2>
+<div class="cards grid grid__cols--3">
+    <?php foreach ($this->listitems as $listitem): ?>
+        <div class="card <?= $dataCategories ?>">
+            <?= $this->figure($listitem->image, 7,
+                [
+                    'metadata' => new Metadata([
+                        Metadata::VALUE_CAPTION => ''
+                      ]),
+                  ]
+                ) 
+            ?>
+            <div class="card__text"><?= $listitem->text ?></div>
+            <a href="<?= $listitem->link ?>" class="card__button btn btn--primary"><?= $listitem->button ?></a>
+        </div>
+    <?php endforeach ?>
+</div>

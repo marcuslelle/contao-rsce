@@ -1,0 +1,19 @@
+<h2>{{ headline }}</h2>
+<div class="cards grid grid__cols--3">
+    {% for listitem in listitems %}
+        <div class="card">
+            {% use "@Contao/component/_figure.html.twig" %}
+            {# Create the figure inline or use the one already in our context #}
+            {% set my_figure = figure(listitem.image, 7, { 
+                metadata: { caption: '' },
+            }) %}
+            {# Output it using the figure component #}
+            {% with {figure: my_figure} %}{{ block('figure_component') }}{% endwith %}
+        {# deprecated ab Contao 5
+            {{ contao_figure(testbild, 6) }}
+        #}
+            <div class="card__text">{{ listitem.text|raw }}</div>
+            <a href="{{ listitem.link }}" class="card__button btn btn--primary">{{ listitem.button }}</a>
+        </div>
+    {% endfor %}
+</div>

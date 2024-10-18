@@ -1,0 +1,55 @@
+<?php
+    use Contao\System;
+    use Symfony\Component\HttpFoundation\Request;
+    if (System::getContainer()->get('contao.routing.scope_matcher')
+        ->isBackendRequest(System::getContainer()->get('request_stack')->getCurrentRequest() ?? Request::create(''))
+    )
+    {
+        echo "Hier kommt was anderes als im Frontend";
+        return;
+    }
+?>
+<?php
+    $today = mktime(0, 0, 0, date("m"), date("d"), date("Y"));
+    $traininglist = [];
+    $i = 0;
+    foreach ($this->trainings as $training) {
+        $traininglist[$i] = (array) $training;
+        $i++;
+    }
+    if (!function_exists('cmp')) {
+        // Sorting function
+        // https://www.php.net/manual/en/function.usort.php Example 2
+        function cmp($a, $b)
+        {
+            return strcmp($a["startdate"], $b["startdate"]);
+        }
+	}
+    usort($traininglist, "cmp");
+?>
+<div class="trainings__list grid grid__cols--2">
+    <?php foreach ($traininglist as $training): ?>
+        <?php if ($training['startdate'] > $today ||$training['startdate'] == ''): ?>
+            <div class="training">
+                <?php if ($training['trainingnr']): ?>
+                    <div class="training__id">FortbildungsNetz-Nr.: <?= $training['trainingnr'] ?></div>
+                <?php endif; ?>
+                <?php if ($training['headline']): ?>
+                    <h2 class="training__headline"><strong><?= $training['headline'] ?></strong></h2>
+                <?php endif; ?>
+                <?php if ($training['trainer']): ?>
+                    <div class="training__trainer"><?= $training['trainer'] ?></div>
+                <?php endif; ?>
+                <?php if ($training['email']): ?>
+                    <div class="training__email">{{email::<?= $training['email'] ?>}}</div>
+                <?php endif; ?>
+                <?php if ($training['date']): ?>
+                    <div class="training__date">Termin: <?= $training['date'] ?> - <span class="training__maxpersons"><?php if ($training['participants'] === '0') { echo "TZ offen"; } else {echo "Maximale Teilnehmerzahl: ".$training['participants']; } ?></span></div>
+                <?php endif; ?>
+                <?php if ($training['text']): ?>
+                    <div class="training__longtext"><?= $training['text'] ?></div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>

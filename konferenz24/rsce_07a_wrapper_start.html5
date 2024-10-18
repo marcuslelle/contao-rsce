@@ -1,0 +1,1 @@
+<div class='grid grid__small__cols--<?= $this->gridSmallSelect ?> grid__tablet__cols--<?= $this->gridTabletSelect ?> grid__medium__cols--<?= $this->gridMediumSelect ?> grid__large__cols--<?= $this->gridLargeSelect ?>'>

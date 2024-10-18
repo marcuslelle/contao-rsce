@@ -1,0 +1,26 @@
+<?php
+    use Contao\CoreBundle\File\Metadata;
+?>
+
+<div class="text__image__button">
+    <div class="grid grid__cols--2">
+        <div class="textblock">
+            <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+            <?= $this->text ?>
+            <a class="btn btn--primary" href="<?= $this->link ?>"><?= $this->button ?></a>
+        </div>
+        <?php if ($this->singleSRC): ?>
+            <?= $this->figure($this->singleSRC, 6,
+                [
+                    'metadata' => new Metadata([
+                        Metadata::VALUE_ALT => $this->imageAlt, Metadata::VALUE_TITLE => $this->imageTitle, Metadata::VALUE_CAPTION => $this->imageCaption
+                      ]),
+                    'enableLightbox' => $this->imageLightbox,
+                    'linkHref' => $this->imageLink,
+                    'options' => ['attr' => ['class' => $this->imageClass]],
+                  ]
+                ) 
+            ?>
+        <?php endif; ?>
+    </div>
+</div>

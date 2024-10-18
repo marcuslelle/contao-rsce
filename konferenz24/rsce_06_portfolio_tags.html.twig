@@ -1,0 +1,34 @@
+<div class="filter">
+    <button class="button button_all" data-filter="all">Alle</button>
+    {% for categorie in categories %}
+        <button class="button button_{{ categorie|replace({' ': "-"})|lower }}" data-filter="{{ categorie|replace({' ': "-"})|lower }}">{{ categorie }}</button>
+    {% endfor %}
+</div>
+
+<h2>{{ headline }}</h2>
+<div class="cards grid grid__cols--3">
+    {% for listitem in listitems %}
+        {% set dataCategories = listitem.filter|join(':::') %}
+        {% set dataCategories = dataCategories|replace({' ': "-", ':::': " "})|lower %}
+
+        <div class="card {{ dataCategories }}">
+            {% set special_size = picture_config({
+                width: 600,
+                height: 400,
+                resizeMode: 'proportional',
+                sizes: '0.75,1,1.5,2'
+            }) %}
+
+            {% use "@Contao/component/_figure.html.twig" %}
+            {# Create the figure inline or use the one already in our context #}
+            {% set my_figure = figure(listitem.image, special_size, { 
+                metadata: { caption: '' },
+            }) %}
+            {# Output it using the figure component #}
+            {% with {figure: my_figure} %}{{ block('figure_component') }}{% endwith %}
+
+            <div class="card__text">{{ listitem.text|raw }}</div>
+            <a href="{{ listitem.link }}" class="card__button btn btn--primary">{{ listitem.button }}</a>
+        </div>
+    {% endfor %}
+</div>
