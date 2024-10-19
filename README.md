@@ -21,4 +21,4 @@ Schick mir deine Anmerkungen, Texte und Custom Elements doch einfach der E-Mail 
 
 Ich möchte in einer kleinen Dokumentation auch immer schreiben, warum dieses Beispiel so oder so aussieht.
 
-Zum Start diese Doku geht es [hier](docs/index_de.md)
+Zum Start dieser Doku geht es [hier](docs/index_de.md)
