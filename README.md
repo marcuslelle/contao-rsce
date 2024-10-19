@@ -8,7 +8,7 @@ Für die Contao Konferenz 2024 habe ich dann beschlossen, einen Vortrag über di
 
 Mir war dabei wichtig, einen strukturierten Überblick zu liefern und wirklich von Null anzufangen, eine Art Referenz zu schaffen.
 
-## Der Anfamg für mehr
+## Der Anfang für mehr
 
 Ich möchte dieses Repository wachsen lassen und ich hoffe, dass auch andere dazu beitragen.
 
