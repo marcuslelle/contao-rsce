@@ -55,7 +55,6 @@ return [
 						'fieldType' => 'radio',
 						'filesOnly' => true,
 						'extensions' => '%contao.image.valid_extensions%',
-						//4.13? 'extensions' => \Config::get('validImageTypes'],
 					],
 				],  
 				'name' => [
