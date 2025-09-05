@@ -58,7 +58,8 @@ return [
 					'inputType' => 'textarea',
 					'eval' => [
 						'tl_class' => 'clr',
-						'rte' => 'tinyMCE_reduced',
+						'rte' => 'tinyMCE_reduced', //Achtung, das ist ein angepasstes TinyMCE-Template. Das muss direkt im Ordner /templates auf der obersten Ebene liegen
+						// oder du schreibtst einfach 'rte' => 'tinyMCE',
 						'maxlength' => 200,
 					],
 				], 

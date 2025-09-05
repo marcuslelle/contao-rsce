@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'label' => ['Team Liste', ''],
+	'label' => ['Team Liste (Slider)', ''],
 	'types' => ['content'],
 	'standardFields' => ['cssID'],
     'contentCategory' => 'Kunde Spezial',

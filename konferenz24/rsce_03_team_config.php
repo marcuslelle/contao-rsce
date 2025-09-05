@@ -29,13 +29,12 @@ return [
 						'fieldType' => 'radio',
 						'filesOnly' => true,
 						'extensions' => '%contao.image.valid_extensions%',
-						//4.13? 'extensions' => \Config::get('validImageTypes'],
 					],
 				],  
 				'name' => [
 					'label' => ['Name', 'Bitte geben Sie einen Namen ein'],
-					//'inputType' => 'text',
-					'inputType' => 'select',
+					//'inputType' => 'text', // wenn es einfach ein Textfeld für die Namenseingabe werden soll, dann dieses Feld einblenden und die nächsten beiden ausblenden / löschen
+					'inputType' => 'select', // Select nur für das Beispiel, dass man Daten aus einer externen Tabelle holt, hier die Mitglieder
 		            'foreignKey' => 'tl_member.CONCAT(firstname," ",lastname)', // aus externer Tabelle, speichert ID
 					'eval' => [
 						'tl_class' => 'w50',
