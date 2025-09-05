@@ -5,6 +5,8 @@ Diese Custom Elements habe ich für meinen Vortrag auf der Contao Konferenz 2024
 Alle Beispiele sind für Contao 5.x entstanden, weil ich auch Twig nutzen wollte.<br>
 Mittlerweile sind die Custom Elements auch für Contao 4.13 getestet. Denk bitte daran, dass Contao 4 schon bald endet (Februar 2026). Mehr erfährst im [Release-Plan von Contao](https://contao.org/de/release-plan).
 
+Du kannst die Dateien [als ZIP herunterladen](Alle-Dateien-Konferenz-2024.zip).
+
 ## rsce_01
 
 Erstmal ein ganz einfaches Element, mit vielen Standard Feldern.
