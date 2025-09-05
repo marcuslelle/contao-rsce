@@ -15,7 +15,7 @@ Ich möchte dieses Repository wachsen lassen und ich hoffe, dass auch andere daz
 Wenn du mit Github vertraut bist, kannst du gerne Issues oder PRs schreiben.
 
 Wenn du etwas beitragen möchtest, aber mit git nicht vertraut bist (ich bin auch nur bei 5%), kannst du auch auf anderem Weg beitragen.<br>
-Schick mir deine Anmerkungen, Texte und Custom Elements doch einfach der E-Mail an marcus@biades.de
+Schick mir deine Anmerkungen, Texte und Custom Elements doch einfach der E-Mail an info@biades.de
 
 ## Mehr als nur Codezeilen
 
