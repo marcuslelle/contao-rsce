@@ -21,3 +21,10 @@ z. B. ein Bild - viele Bilder
 [Standard-Überschrift im Template](https://community.contao.org/de/showthread.php?88747-Standard-%C3%9Cberschrift-im-Twig-Template)
 
 
+
+        'fieldType' => 'checkbox',
+        'isGallery' => true,
+        'multiple'=> true,
+        'filesOnly' => true,
+        'isSortable' => true,
+        'orderField' => 'orderSRC',
