@@ -28,3 +28,7 @@ z. B. ein Bild - viele Bilder
         'filesOnly' => true,
         'isSortable' => true,
         'orderField' => 'orderSRC',
+
+## andere Webseiten
+
+https://www.agenturzentral.de/blog/filter-fuer-contao-5-mit-rocksolid-custom-elements
