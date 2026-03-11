@@ -32,3 +32,4 @@ z. B. ein Bild - viele Bilder
 ## andere Webseiten
 
 https://www.agenturzentral.de/blog/filter-fuer-contao-5-mit-rocksolid-custom-elements
+https://community.contao.org/de/showthread.php?87359-Bildausgabe-und-Metadata-im-twig-Template
