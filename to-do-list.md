@@ -11,6 +11,15 @@
 
 z. B. ein Bild - viele Bilder
 
+## Doku group
+
+        'tab4_description' => [
+            'label' => ['Tab 4', ''],
+            'inputType' => 'group',
+            'eval' => [
+                'collapsed' => true,
+            ],
+        ],
 
 # Verarbeitung anderer Beispiele
 
