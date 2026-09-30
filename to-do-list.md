@@ -1,5 +1,12 @@
 # To-Do-Liste
 
+{% set metadataImageLink = figure(listitem.image, {}).metadata.url|insert_tag %}
+{% if metadataImageLink %}
+<a href="{{ metadataImageLink }}" target="_blank">
+{% endif %}
+
+=> Metadaten aus Datei ziehen
+
 ## Picker Element
 
 * Picker für Seiten, Artikel, Files.
